@@ -1,0 +1,256 @@
+@font-face {
+	font-family: 'Avant Garde C';
+	font-style: normal;
+	font-weight: normal;
+	src: url('../fonts/AvantGardeC.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/AvantGardeC.woff') format('woff'),
+		url('../fonts/AvantGardeC.otf') format('truetype'),
+		url('../fonts/AvantGardeC.svg#svgFontName') format('svg');
+}
+
+@font-face {
+	font-family: 'Avant Garde C Bold Italic';
+	font-style: normal;
+	font-weight: normal;
+	src: url('../fonts/AvantGardeC_Bold_Italic.eot?#iefix')
+		format('embedded-opentype'),
+		url('../fonts/AvantGardeC_Bold_Italic.woff') format('woff'),
+		url('../fonts/AvantGardeC_Bold_Italic.otf') format('truetype'),
+		url('../fonts/AvantGardeC_Bold_Italic.svg#svgFontName') format('svg');
+}
+
+@font-face {
+	font-family: 'Avant Garde C Bold';
+	font-style: normal;
+	font-weight: normal;
+	src: url('../fonts/AvantGardeC_Bold.eot?#iefix')
+		format('embedded-opentype'), url('../fonts/AvantGardeC_Bold.woff')
+		format('woff'), url('../fonts/AvantGardeC_Bold.otf')
+		format('truetype'), url('../fonts/AvantGardeC_Bold.svg#svgFontName')
+		format('svg');
+}
+
+@font-face {
+	font-family: 'Avant Garde C Italic';
+	font-style: normal;
+	font-weight: normal;
+	src: url('../fonts/AvantGardeC_Italic.eot?#iefix')
+		format('embedded-opentype'), url('../fonts/AvantGardeC_Italic.woff')
+		format('woff'), url('../fonts/AvantGardeC_Italic.otf')
+		format('truetype'), url('../fonts/AvantGardeC_Italic.svg#svgFontName')
+		format('svg');
+}
+
+* {
+	-webkit-box-sizing: initial;
+	-moz-box-sizing: initial;
+	box-sizing: initial;
+}
+
+html,body,a {
+	font-family: "Avant Garde C", "Open Sans", Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	line-height: normal;
+	color: rgb(34, 34, 34);
+	letter-spacing: 1px;
+	margin: 0;
+	overflow: auto
+}
+a, a:hover {
+	text-decoration: none;
+}
+.container {
+	margin-left: 70px;
+}
+.container .main, .horizontal-menu > div{
+	max-width: 1240px;
+    margin: 0 auto;
+    width: 92%;
+}
+
+.column {
+	float:left;
+}
+
+.column.third {
+	width: 33.3%;
+    display: inline-block;
+    white-space: normal;
+    /* min-height: 100px; */
+    vertical-align: top
+}
+
+.column .title {
+	font-size: 22px;
+	border-bottom: 2px solid rgb(15, 114, 114);
+	display: inline-block;
+	margin: 50px 0 0 30px;
+	line-height: 30px;
+}
+
+.column .item {
+	margin-top: 20px;
+	
+}
+
+.column .item .name {
+	padding-top: 10px;
+    display: block;
+    font-size: 14px;
+    font-family: "Avant Garde C Bold", "Open Sans", Helvetica, Arial, sans-serif;
+}
+.column .item .date {
+    color: rgb(242, 242, 246);
+    background-image: url("../img/common/date.png");
+    width: 140px;
+    height: 25px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    text-align: center;
+    line-height: 25px;
+    font-size: 16px;
+    margin-top: 10px
+}
+.horizontal-menu {
+	font-size: 22px;
+	background-color: rgb(34, 34, 34);
+	height: 70px;
+}
+
+.horizontal-menu .title {
+	border-left: 2px solid rgb(242, 242, 246);
+	color: rgb(242, 242, 246);
+	padding-left: 20px;
+	line-height: 44px;
+	margin-top: 13px;
+}
+
+.horizontal-menu .message img {
+	height: 90px;
+	top: -5px;
+    position: absolute;
+}
+
+.horizontal-menu .submenu img{
+	height: 65px;
+	margin-top:5px;
+}
+.vertical-menu {
+	float: left;
+	width: 70px;
+	background-color: rgb(242, 242, 246);
+	height: 100%;
+    min-height: 1000px;
+}
+
+.vertical-menu .logo {
+	width: 70px;
+	height: 70px;
+	
+	background-color: rgb(15, 114, 114);
+}
+
+.vertical-menu .logo .img {
+	width: 65px;
+    height: 65px;
+    background-image: url("../img/logo/logo.png");
+    margin: 0 auto;
+    background-size: contain;
+    background-repeat: no-repeat;
+    padding-top: 5px;
+}
+
+.vertical-menu .item {
+	width: 70px;
+	height: 70px;
+	background-size:cover;
+	display: block;
+}
+
+.vertical-menu .item.main {
+	background-image: url("../img/menu/main.png");
+}
+
+.vertical-menu .item.courses {
+	background-image: url("../img/menu/courses.png");
+}
+
+.vertical-menu .item.webinars {
+	background-image: url("../img/menu/webinars.png");
+}
+
+.vertical-menu .item.blog {
+	background-image: url("../img/menu/blog.png");
+}
+
+.vertical-menu .item.career {
+	background-image: url("../img/menu/career.png");
+}
+
+.vertical-menu > .item.main:hover, .item.main.active {
+	background-image: url("../img/menu/main-hover.png");
+}
+
+.vertical-menu > .item.courses:hover, .item.courses.active {
+	background-image: url("../img/menu/courses-hover.png");
+}
+
+.vertical-menu > .item.webinars:hover, .item.webinars.active {
+	background-image: url("../img/menu/webinars-hover.png");
+}
+
+.vertical-menu > .item.blog:hover, .item.blog.active {
+	background-image: url("../img/menu/blog-hover.png");
+}
+
+.vertical-menu > .item.career:hover, .item.career.active {
+	background-image: url("../img/menu/career-hover.png");
+}
+
+input[type=checkbox] {
+	display: none;
+}
+
+input[type=checkbox]+label {
+	background-image: url("../img/icon/checkbox.png");
+	height: 25px;
+	width: 25px;
+	display: inline-block;
+	padding: 0;
+	background-size: cover;
+	text-align: left;
+	margin-right: 15px;
+	float: left;
+}
+
+.section-title {
+	background-image: url("../img/common/1.png");
+	background-repeat: repeat-y;
+	background-size:2px;
+	background-color: rgb(242, 242, 246);
+	font-size: 16px;
+	color: rgb(86, 191, 191);
+	
+}
+.section-content{
+	margin: 10px 0;
+	font-size: 11px;
+}
+
+.section .button{
+	margin: 10px 0;
+    font-size: 15px;
+    color: rgb(242, 242, 246);
+    background-image: url("../img/common/3.png");
+    width: 170px;
+    height: 40px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    text-align: center;
+    line-height: 30px;
+    display: inline-block;
+}
+
+input[type=checkbox]:checked+label {
+	background-image: url("../img/icon/checkbox-checked.png");
+}

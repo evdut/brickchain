@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>project-tracker</artifactId>
+		<groupId>com.brickchain</groupId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>project-tracker-ear</artifactId>
+	<packaging>ear</packaging>
+
+	<name>project-tracker-ear</name>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<build>
+		<finalName>${project.parent.artifactId}</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.5.1</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-ear-plugin</artifactId>
+				<version>2.8</version>
+				<configuration>
+					<version>6</version>
+					<defaultLibBundleDir>lib/</defaultLibBundleDir>
+					<skinnyWars>true</skinnyWars>
+					<generateApplicationXml>true</generateApplicationXml>
+					<initializeInOrder>true</initializeInOrder>
+					<modules>
+						<ejbModule>
+							<groupId>${project.groupId}</groupId>
+							<artifactId>project-tracker-server</artifactId>
+							<bundleFileName>project-tracker-server.jar</bundleFileName>
+						</ejbModule>
+						<webModule>
+							<groupId>${project.groupId}</groupId>
+							<artifactId>project-tracker-web</artifactId>
+							<contextRoot>/</contextRoot>
+						</webModule>
+					</modules>
+					<archive>
+						<addMavenDescriptor>false</addMavenDescriptor>
+					</archive>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.wildfly.plugins</groupId>
+				<artifactId>wildfly-maven-plugin</artifactId>
+				<version>1.0.2.Final</version>
+
+				<configuration>
+					<hostname>${wildfly-hostname}</hostname>
+					<port>${wildfly-port}</port>
+					<skip>false</skip>
+					<force>true</force>
+					<username>${wildfly.username}</username>
+					<password>${wildfly.password}</password>
+				</configuration>
+
+				<executions>
+					<execution>
+						<id>postgresql</id>
+						<goals>
+							<goal>deploy-artifact</goal>
+						</goals>
+
+						<configuration>
+							<force>true</force>
+							<groupId>org.postgresql</groupId>
+							<artifactId>postgresql</artifactId>
+							<name>postgresql.jar</name>
+						</configuration>
+					</execution>
+
+					<!-- Add a data source -->
+					<execution>
+						<id>default-cli</id>
+						<goals>
+							<goal>add-resource</goal>
+						</goals>
+						<configuration>
+
+							<address>subsystem=datasources</address>
+							<resources>
+								<resource>
+									<address>data-source=projectTrackerDatasource</address>
+									<properties>
+										<connection-url>${jdbc.connection.url}</connection-url>
+										<jndi-name>${jdbc.jndi.name}</jndi-name>
+										<enabled>true</enabled>
+										<enable>true</enable>
+										<user-name>projectTracker</user-name>
+										<password>projectTracker</password>
+										<driver-name>postgresql.jar</driver-name>
+										<driver-class>org.postgresql.Driver</driver-class>
+										<use-ccm>false</use-ccm>
+									</properties>
+								</resource>
+								<resource>
+									<address>data-source=queryStoreDatasource</address>
+									<properties>
+										<connection-url>${infinispan.store.url}</connection-url>
+										<jndi-name>${infinispan.store.jndi.name}</jndi-name>
+										<enabled>true</enabled>
+										<enable>true</enable>
+										<user-name>queryStoreAdmin</user-name>
+										<password>queryStore</password>
+										<driver-name>postgresql.jar</driver-name>
+										<driver-class>org.postgresql.Driver</driver-class>
+										<use-ccm>false</use-ccm>
+									</properties>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+
+					<!-- Add a data source -->
+
+					<execution>
+						<id>undeploy-cli</id>
+						<goals>
+							<goal>undeploy</goal>
+						</goals>
+						<configuration>
+							<ignoreMissingDeployment>true</ignoreMissingDeployment>
+						</configuration>
+					</execution>
+
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.brickchain</groupId>
+			<artifactId>project-tracker-web</artifactId>
+			<version>${project-tracker.version}</version>
+			<type>war</type>
+		</dependency>
+		<dependency>
+			<groupId>com.brickchain</groupId>
+			<artifactId>project-tracker-server</artifactId>
+			<version>${project-tracker.version}</version>
+			<type>ejb</type>
+		</dependency>
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>9.4-1206-jdbc41</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+</project>
