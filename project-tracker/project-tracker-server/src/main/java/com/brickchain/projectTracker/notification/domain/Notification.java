@@ -21,8 +21,8 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-@Entity
-@Table(name = "NOTIFICATION")
+//@Entity
+//@Table(name = "NOTIFICATION")
 public class Notification implements Serializable {
 
 	@Id
@@ -38,62 +38,62 @@ public class Notification implements Serializable {
 	public Notification() {
 	}
 
-	public Notification(String profileId) {
-		this.profileId = profileId;
-	}
+//	public Notification(String profileId) {
+//		this.profileId = profileId;
+//	}
 
 	public Notification(Long id) {
 		this.id = id;
 	}
 
-	public void updateProfile(String firstName, String lastName, String userName) {
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.userName = userName;
-	}
+//	public void updateProfile(String firstName, String lastName, String userName) {
+//		this.firstName = firstName;
+//		this.lastName = lastName;
+//		this.userName = userName;
+//	}
 
 	public Long getId() {
 		return id;
 	}
 
-	public String getProfileId() {
-		return this.profileId;
-	}
-
-	public String getUserName() {
-		return userName;
-	}
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
+//	public String getProfileId() {
+//		return this.profileId;
+//	}
+//
+//	public String getUserName() {
+//		return userName;
+//	}
+//
+//	public String getFirstName() {
+//		return firstName;
+//	}
+//
+//	public String getLastName() {
+//		return lastName;
+//	}
 
 	// TODO update after exception handling is implemented
-	public Project getProject(Long projectId) {
-		return projects.stream().filter(project -> project.getId().equals(projectId)).findAny()
-				.orElseThrow(() -> new RuntimeException(""));
-	}
+//	public Project getProject(Long projectId) {
+//		return projects.stream().filter(project -> project.getId().equals(projectId)).findAny()
+//				.orElseThrow(() -> new RuntimeException(""));
+//	}
 
-	@Override
-	public int hashCode() {
-		int hash = 5;
-		hash = 67 * hash + Objects.hashCode(this.profileId);
-		return hash;
-	}
+//	@Override
+//	public int hashCode() {
+//		int hash = 5;
+//		hash = 67 * hash + Objects.hashCode(this.profileId);
+//		return hash;
+//	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (obj == null) {
-			return false;
-		}
-		if (getClass() != obj.getClass()) {
-			return false;
-		}
-		final Notification other = (Notification) obj;
-		return Objects.equals(this.profileId, other.profileId);
-	}
+//	@Override
+//	public boolean equals(Object obj) {
+//		if (obj == null) {
+//			return false;
+//		}
+//		if (getClass() != obj.getClass()) {
+//			return false;
+//		}
+//		final Notification other = (Notification) obj;
+//		return Objects.equals(this.profileId, other.profileId);
+//	}
 }

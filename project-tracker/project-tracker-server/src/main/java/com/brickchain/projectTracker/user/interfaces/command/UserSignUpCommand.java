@@ -1,9 +1,5 @@
 package com.brickchain.projectTracker.user.interfaces.command;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 import javax.validation.constraints.NotNull;
 
 import net.evdut.cqrs.framework.api.GenericCommand;
@@ -18,16 +14,13 @@ public class UserSignUpCommand extends GenericCommand<String> {
 	@NotNull
 	private String email;
 	private String password;
-	private List<String> roles;
 
 	public UserSignUpCommand() {
 	}
 
-	public UserSignUpCommand(String email, String password, @NotNull String... roles) {
+	public UserSignUpCommand(String email, String password) {
 		this.email = email;
 		this.password = password;
-		this.roles = new ArrayList<String>(roles.length);
-		Collections.addAll(this.roles, roles);
 	}
 
 	public String getEmail() {
@@ -36,9 +29,5 @@ public class UserSignUpCommand extends GenericCommand<String> {
 
 	public String getPassword() {
 		return password;
-	}
-
-	public List<String> getRoles() {
-		return roles;
 	}
 }

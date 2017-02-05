@@ -21,11 +21,11 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 
-@Entity
+@Entity(name = "ProjectUser")
 @Table(name = "PROJECT_USER")
-@NamedQueries({ @NamedQuery(name = "User.findAll", query = "Select u from User u order by u.userName asc"),
-		@NamedQuery(name = "User.findByName", query = "Select u from User u where u.userName like :name order by u.userName asc"),
-		@NamedQuery(name = "User.findByProfileId", query = "Select u from User u where u.profileId like :profileId")})
+@NamedQueries({ @NamedQuery(name = "ProjectUser.findAll", query = "Select u from User u order by u.userName asc"),
+		@NamedQuery(name = "ProjectUser.findByName", query = "Select u from User u where u.userName like :name order by u.userName asc"),
+		@NamedQuery(name = "ProjectUser.findByProfileId", query = "Select u from User u where u.profileId like :profileId")})
 public class User implements Serializable {
 
 	/**

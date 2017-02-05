@@ -105,7 +105,7 @@
 										<use-ccm>false</use-ccm>
 									</properties>
 								</resource>
-								<resource>
+								<!-- resource>
 									<address>data-source=queryStoreDatasource</address>
 									<properties>
 										<connection-url>${infinispan.store.url}</connection-url>
@@ -118,7 +118,7 @@
 										<driver-class>org.postgresql.Driver</driver-class>
 										<use-ccm>false</use-ccm>
 									</properties>
-								</resource>
+								</resource -->
 							</resources>
 						</configuration>
 					</execution>

@@ -8,25 +8,15 @@
 <head>
 <link rel="stylesheet" type="text/css" href="resources/css/main.css" />
 <link rel="stylesheet" type="text/css" href="resources/css/login.css" />
+<link rel="shortcut icon" type="image/x-icon" href="/resources/img/favicon.png"/>
 <script type="text/javascript" src="resources/js/jquery.min.js"></script>
 </head>
 <body>
-	<div class="vertical-menu">
-		<div class="logo">
-			<div class="img"></div>
-		</div>
-	</div>
-	<div class="container">
-		<div class="horizontal-menu">
-			<div style="max-width: 1050px; margin: 0 auto;">
-				<div class="title">Вход</div>
-				<div class="title">Регистрация</div>
-			</div>
-		</div>
-		<div class="main">
+	<div class="main-wrapper">
+		<div class="container">
 			<form method="post" action="j_security_check" class="left">
 				<div>
-					<input style="color:rgb(255,95,95) !important" type="text" disabled="disabled" value="Неверный email или пароль" />
+					<input style="color:rgb(255,95,95) !important" type="text" disabled="disabled" value="Wrong credentials" />
 				</div>
 				<div>
 					<input type="text" name="j_username" placeholder="Email" />
@@ -34,14 +24,8 @@
 				<div>
 					<input class="last" type="text" name="j_password" placeholder="Password" />
 				</div>
-				<div>
-					<input type="checkbox" name="rememberMe" id="rememberMe" /><label
-						for="rememberMe"></label><span
-						style="line-height: 27px;letter-spacing: 0.5px; color: rgb(15, 114, 114)">Запомнить
-						меня</span>
-				</div>
 				<div style="text-align: center;">
-					<input style="width: 150px;" class="button" type="submit" name="submit" value="Вход" />
+					<input style="width: 150px;" class="button" type="submit" name="submit" value="Login" />
 				</div>
 			</form>
 			<form id="form2" method="post" action="j_security_check"
@@ -58,13 +42,8 @@
 					<div id="confirmError"></div>
 					<input class="last" id="confirm" type="password" placeholder="Confirm password" />
 				</div>
-				<div>
-					<input type="checkbox" name="agreement" id="agreement" /><label
-						for="agreement"></label><span
-						style="letter-spacing: 0.5px; color: rgb(15, 114, 114)">Я ознакомился и соглашаюсь с правилами пользования сервисом</span>
-				</div>
 				<div style="text-align: center;">
-					<input style="width: 220px;" id="signup" type="button" class="button" value="Регистрация" />
+					<input style="width: 220px;" id="signup" type="button" class="button" value="Sign-up" />
 				</div>
 			</form>
 		</div>
@@ -79,16 +58,23 @@
 				if (password != $('#confirm').val()) {
 					$('#confirm').css("color","rgb(255,95,95)");
 					$('#confirmError').css("color","rgb(255, 95, 95) !important");
-					$('#confirmError').text("Пароль не совпадает");
+					$('#confirmError').text("Password do not match");
 					return false;
 				} else {
 					if (!registered) {
-						$.post('/signup-student', {
-							"username" : username,
-							"password" : password
-						}, function() {
-							registered = true;
-							$('#form2').submit();
+						$.ajax({
+						  url: '/api/public/auth/signup',
+						  type: "POST",
+						  data: JSON.stringify({
+								"email" : username,
+								"password" : password
+							}),
+						  contentType :"application/json",
+						  success: function() {
+								alert(3);
+								registered = true;
+								$('#form2').submit();
+							}
 						});
 						return false;
 					}

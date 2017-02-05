@@ -20,9 +20,9 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-@Entity
-@Table(name = "NOTIFICATION_USER")
-@NamedQuery(name = "User.findByProfileId", query = "Select u from User u where u.profileId like :profileId")
+//@Entity
+//@Table(name = "NOTIFICATION_USER")
+//@NamedQuery(name = "User.findByProfileId", query = "Select u from User u where u.profileId like :profileId")
 public class User implements Serializable {
 
 	@Id
@@ -33,9 +33,9 @@ public class User implements Serializable {
 	@Column(unique = true)
 	private String profileId;
 
-	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(name = "USER_PROJECT", joinColumns = @JoinColumn(name = "USER_ID", referencedColumnName = "ID"), inverseJoinColumns = @JoinColumn(name = "PROJECT_ID", referencedColumnName = "ID"))
-	private List<Project> projects;
+//	@ManyToMany(fetch = FetchType.LAZY)
+//	@JoinTable(name = "USER_PROJECT", joinColumns = @JoinColumn(name = "USER_ID", referencedColumnName = "ID"), inverseJoinColumns = @JoinColumn(name = "PROJECT_ID", referencedColumnName = "ID"))
+//	private List<Project> projects;
 
 	public User() {
 	}
@@ -48,11 +48,11 @@ public class User implements Serializable {
 		this.id = id;
 	}
 
-	public void updateProfile(String firstName, String lastName, String userName) {
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.userName = userName;
-	}
+//	public void updateProfile(String firstName, String lastName, String userName) {
+//		this.firstName = firstName;
+//		this.lastName = lastName;
+//		this.userName = userName;
+//	}
 
 	public Long getId() {
 		return id;
@@ -62,23 +62,23 @@ public class User implements Serializable {
 		return this.profileId;
 	}
 
-	public String getUserName() {
-		return userName;
-	}
+//	public String getUserName() {
+//		return userName;
+//	}
+//
+//	public String getFirstName() {
+//		return firstName;
+//	}
+//
+//	public String getLastName() {
+//		return lastName;
+//	}
 
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	// TODO update after exception handling is implemented
-	public Project getProject(Long projectId) {
-		return projects.stream().filter(project -> project.getId().equals(projectId)).findAny()
-				.orElseThrow(() -> new RuntimeException(""));
-	}
+//	// TODO update after exception handling is implemented
+//	public Project getProject(Long projectId) {
+//		return projects.stream().filter(project -> project.getId().equals(projectId)).findAny()
+//				.orElseThrow(() -> new RuntimeException(""));
+//	}
 
 	@Override
 	public int hashCode() {

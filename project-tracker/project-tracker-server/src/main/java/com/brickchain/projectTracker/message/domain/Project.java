@@ -20,7 +20,7 @@ import javax.persistence.Table;
 
 import com.brickchain.projectTracker.message.domain.Task;
 
-@Entity
+@Entity(name = "ProjectConversation")
 @Table(name = "PROJECT_CONVERSATION")
 @NamedQuery(name = "ProjectConversation.findByProjectUUID", query = "Select p from Project p where p.projectUUID like :projectUUID")
 public class Project implements Conversation {
