@@ -8,6 +8,7 @@ import javax.persistence.PersistenceContext;
 
 import org.apache.log4j.Logger;
 
+import com.brickchain.projectTracker.user.domain.Group;
 import com.brickchain.projectTracker.user.domain.repository.Repository;
 
 public abstract class JPARepository<T extends Serializable> implements Repository<T>{
@@ -30,6 +31,8 @@ public abstract class JPARepository<T extends Serializable> implements Repositor
 	@Override
 	public void create(T entity) {
 		entityManager.persist(entity);
+		//TODO Remove after profile id setting fix
+		entityManager.flush();
 	}
 	
 	@Override

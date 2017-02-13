@@ -20,12 +20,12 @@ import javax.validation.constraints.NotNull;
 
 
 @Entity
-@Table(name="GROUP")
+@Table(name="TRACKER_GROUP")
 @NamedQueries({
     @NamedQuery(name = "Group.findAll",
             query = "Select g from Group g order by g.name asc"),
     @NamedQuery(name = "Group.findGroupByName",
-            query = "Select g from Group g where g.name like :name")})
+            query = "Select g from Group g where g.name = :name")})
 public class Group implements Serializable {
 
 	private static final long serialVersionUID = 1L;

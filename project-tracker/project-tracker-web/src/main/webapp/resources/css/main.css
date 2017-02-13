@@ -15,7 +15,8 @@ html, body, a {
 	color: rgb(34, 34, 34);
 	letter-spacing: 1px;
 	margin: 0;
-	overflow: auto
+	overflow: auto;
+	height: 100%
 }
 
 a, a:hover {
@@ -26,15 +27,6 @@ a, a:hover {
 	width: 100%;
 	height: 100%;
 	overflow: hidden;
-}
-
-@media screen and (max-height: 500px) {
-	.main-wrapper {
-		overflow-y: auto;
-	}
-	.container {
-	    min-height: 500px;
-	}
 }
 
 .main-wrapper::after {
@@ -60,19 +52,193 @@ a, a:hover {
 
 .container {
 	position: relative;
-    overflow: hidden;
-    -webkit-transform-origin: center;
-    transform-origin: center;
-    -webkit-animation: app-enter 0.3s cubic-bezier(0.1, 0.82, 0.25, 1);
-    animation: app-enter 0.3s cubic-bezier(0.1, 0.82, 0.25, 1);
-    background-position: top left;
-    background-repeat: repeat-x;
-    background-color: #f7f7f7;
-    display: -webkit-flex;
-    display: flex;
+	overflow: hidden;
+	-webkit-transform-origin: center;
+	transform-origin: center;
+	-webkit-animation: app-enter 0.3s cubic-bezier(0.1, 0.82, 0.25, 1);
+	animation: app-enter 0.3s cubic-bezier(0.1, 0.82, 0.25, 1);
+	background-position: top left;
+	background-repeat: repeat-x;
+	background-color: #f7f7f7;
+	display: -webkit-flex;
+	display: flex;
 }
 
+div.logout {
+	left: 90%;
+	position: absolute;
+	margin: 30px;
+	font-size: 16px;
+	cursor: pointer;
+	z-index: 1000;
+}
+
+div.logout:hover {
+	font-size: 20px
+}
 
 input[type=checkbox]:checked+label {
 	background-image: url("../img/icon/checkbox-checked.png");
+}
+
+/******************panel************************/
+.container .panel {
+	height: 100%;
+	-webkit-transform: translateZ(0);
+	transform: translateZ(0);
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-direction: column;
+	flex-direction: column;
+	overflow: hidden;
+	position: relative;
+}
+
+.container .panel .header {
+	-webkit-flex: none;
+	flex: none;
+	height: 59px;
+	width: 100%;
+	background-color: #eee;
+	box-sizing: border-box;
+	padding: 10px;
+	position: relative;
+	z-index: 1000;
+}
+
+.container .panel .list-header {
+	padding-right: 16px;
+	padding-left: 15px;
+	-webkit-justify-content: flex-end;
+	justify-content: flex-end;
+}
+
+.avatar {
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center center;
+	position: relative;
+	overflow: hidden;
+}
+
+.icon-user-default, .icon-group-default, .icon-broadcast-default,
+	.icon-psa-default {
+	position: relative;
+}
+
+.header .avatar-body {
+	height: 40px;
+	width: 40px;
+	cursor: pointer;
+	border-radius: 100%;
+	z-index: 1;
+}
+
+.icon, .icon-close-panel {
+	width: 24px;
+	height: 24px;
+}
+/******************side-panel*******************/
+@media screen and (min-width: 1301px) {
+	.container .side-panel {
+		width: 30%;
+	}
+}
+
+@media screen and (max-width: 1300px) {
+	.container .side-panel {
+		width: 35%;
+	}
+}
+
+@media screen and (max-width: 900px) {
+	.container .side-panel {
+		width: 40%;
+	}
+}
+
+.user {
+	-webkit-flex: 1;
+	flex: 1;
+}
+
+.side-panel .list-header .controls {
+	-webkit-flex: none;
+	flex: none;
+}
+
+.header, .row-body, .chat-main, .header-main, .chat-secondary,
+	.header-secondary, .bubble-actions, .menu-horizontal, .menu-horizontal>span,
+	.menu-tabs, .menu-pills, .audio, .media-panel-header, .list-action,
+	.media-collection, .drawer-capture .capture-footer, .tip, .vcard,
+	.butterbar, .popup .btn-light, .drawer-header-offset,
+	.drawer-button-row, .pane-list-header, .row-control, .entry-main,
+	.entry-platform {
+	display: -webkit-flex;
+	display: flex;
+	-webkit-align-items: center;
+	align-items: center;
+}
+
+.menu-horizontal>.menu-item, .menu-horizontal>span>.menu-item {
+	height: 24px;
+	-webkit-flex: none;
+	flex: none;
+	margin-right: 10px;
+	position: relative;
+	padding: 8px;
+	border-radius: 50%;
+	transition: background-color .18s ease;
+}
+
+.menu-horizontal>.menu-item.active, .menu-horizontal>span>.menu-item.active
+	{
+	background-color: rgba(0, 0, 0, 0.1);
+}
+
+.icon-project {
+	background-image: url("../img/icon/project-add.svg");
+	background-size: cover;
+}
+
+.icon-menu {
+	background-image: url("../img/icon/menu.svg");
+	background-size: cover;
+}
+
+button {
+	border: 0;
+	padding: 0;
+	margin: 0;
+	background: none;
+	outline: none;
+	cursor: pointer;
+	font-family: inherit;
+}
+/******************main-panel*******************/
+@media screen and (min-width: 1301px) {
+	.container .main-panel {
+		width: 70%;
+	}
+}
+
+@media screen and (max-width: 1300px) {
+	.container .main-panel {
+		width: 65%;
+	}
+}
+
+@media screen and (max-width: 900px) {
+	.container .main-panel {
+		width: 60%;
+	}
+}
+
+.main-panel .project-header {
+	padding-left: 16px;
+	padding-right: 15px;
+	display: -webkit-flex;
+	display: flex;
+	box-sizing: border-box;
+	border-left: 1px solid rgba(0, 0, 0, 0.08);
 }

@@ -30,6 +30,7 @@ public class UserSignUpCommandHandler implements Handler<UserSignUpCommand> {
 	@Override
 	public void handle(UserSignUpCommand command) {
 		User user = new User(command.getPassword(), command.getEmail(), command.getEmail());
+		user.addGroup(userRepository.findGroupByName("USER"));
 		userRepository.create(user);
 		command.setResult(user.getProfileId());
 	}

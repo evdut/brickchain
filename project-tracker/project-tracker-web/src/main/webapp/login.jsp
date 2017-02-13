@@ -58,9 +58,7 @@
 					$('#confirmError').text("Password do not match");
 					return false;
 				} else {
-					alert(1);
 					if (!registered) {
-						alert(2);
 						$.ajax({
 						  url: '/api/public/auth/signup',
 						  type: "POST",
@@ -70,7 +68,6 @@
 							}),
 						  contentType :"application/json",
 						  success: function() {
-								alert(3);
 								registered = true;
 								$('#form2').submit();
 							}

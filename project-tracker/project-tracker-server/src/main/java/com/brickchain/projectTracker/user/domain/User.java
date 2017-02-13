@@ -21,6 +21,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.PostPersist;
+import javax.persistence.PrePersist;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -31,10 +32,11 @@ import org.apache.log4j.Logger;
 import com.brickchain.projectTracker.utils.ConstantUtils;
 
 @Entity
-@Table(name = "USER")
+@Table(name = "TRACKER_USER")
 @NamedQueries({
 		@NamedQuery(name = "User.findAll", query = "Select u from User u order by u.userName asc"),
-		@NamedQuery(name = "User.findByName", query = "Select u from User u where u.userName like :name order by u.userName asc") })
+		@NamedQuery(name = "User.findByName", query = "Select u from User u where u.userName like :name order by u.userName asc"),
+		@NamedQuery(name = "User.findByProfileId", query = "Select u from User u where u.profileId = :profileId")})
 public class User implements Serializable {
 
 	/**

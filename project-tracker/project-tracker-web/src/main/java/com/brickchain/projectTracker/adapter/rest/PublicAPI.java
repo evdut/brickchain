@@ -10,7 +10,7 @@ import javax.ws.rs.core.MediaType;
 import com.brickchain.projectTracker.user.interfaces.UserCommandInvoker;
 import com.brickchain.projectTracker.user.interfaces.command.UserSignUpCommand;
 
-@Path("/public/auth")
+@Path("/public")
 @ApplicationScoped
 public class PublicAPI {
 
@@ -18,7 +18,7 @@ public class PublicAPI {
 	UserCommandInvoker userCommandInvoker;
 	
 	@POST
-	@Path("/signup")
+	@Path("/auth/signup")
 	@Consumes(MediaType.APPLICATION_JSON)
     public void signUp(UserSignUpCommand command) {
 		userCommandInvoker.command(command);

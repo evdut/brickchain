@@ -7,6 +7,7 @@ import javax.transaction.Transactional;
 
 import org.apache.log4j.Logger;
 
+import com.brickchain.projectTracker.user.domain.Group;
 import com.brickchain.projectTracker.user.domain.User;
 import com.brickchain.projectTracker.user.domain.repository.UserRepository;
 
@@ -48,11 +49,21 @@ public class JPAUserRepository extends JPARepository<User> implements UserReposi
 	public User findByProfileId(String profileId) {
 		try {
 			return entityManager.createNamedQuery("User.findByProfileId", User.class)
-					.setParameter("profileId", "%" + profileId + "%").getSingleResult();
+					.setParameter("profileId", profileId).getSingleResult();
 		} catch (NoResultException e) {
 			logger.info("No User found for name: " + profileId);
 			return null;
 		}
 	}
-
+	@Override
+	public Group findGroupByName(String groupName) {
+		try {
+			return entityManager.createNamedQuery("Group.findGroupByName", Group.class)
+					.setParameter("name", groupName).getSingleResult();
+		} catch (NoResultException e) {
+			logger.info("No User found for name: " + groupName);
+			return null;
+		}
+	}
+	
 }
